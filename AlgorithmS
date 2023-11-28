@@ -1,0 +1,30 @@
+**Algorithm S**
+
+1. Initialize Q-values: Q(s, a) = 0 for all states s and actions a
+2. For each episode:
+    a. Initialize state s
+    b. While not in terminal state:
+        i. Select action a with probability ε or with probability 1-ε, select the action with highest Q-value for state s
+        ii. Take action a, observe reward r, and transition to state s'
+        iii. Update Q-value: Q(s, a) ← Q(s, a) + α[r + γ max_a' Q(s', a') - Q(s, a)]
+        iv. s ← s'
+
+**Key Differences from Q*:**
+
+1. **Softmax Exploration:** Instead of strictly choosing the action with the highest Q-value, S introduces a softmax function to control the exploration-exploitation trade-off. This allows for a balance between trying new actions (exploration) and sticking to proven actions (exploitation).
+
+2. **Online Q-value Updates:** Unlike Q*, which updates Q-values after each episode, S updates Q-values after each step, allowing for quicker adaptation to the environment.
+
+3. **Eligibility Traces:** To address the delayed reward issue, S can incorporate eligibility traces, which keep track of recently visited states and update their Q-values accordingly, even when the reward is received later in the episode.
+
+Potential Advantages of S:
+
+1. **Simpler and More Elegant:** S's formulation is simpler and more concise than Q*, making it easier to understand and implement.
+
+2. **Softmax-Based Exploration:** The use of a softmax function for exploration can lead to a more efficient exploration-exploitation balance.
+
+3. **Online Q-value Updates:** Online updates allow for faster adaptation to the environment and potentially quicker convergence.
+
+4. **Eligibility Traces:** Eligibility traces can address the delayed reward issue, making S applicable to a wider range of reinforcement learning problems.
+
+Empirical evaluation on various reinforcement learning tasks would be necessary to definitively compare the performance of S against Q* and other reinforcement learning algorithms. However, the proposed algorithm, with its simpler formulation, softmax-based exploration, online updates, and eligibility traces, has the potential to offer a competitive alternative to existing reinforcement learning methods.
