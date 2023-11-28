@@ -1,0 +1,24 @@
+```
+A(s) = max_a [R(s, a) + γ * min_s' [Q'(s')]
+```
+
+Where:
+
+* A(s) is the **action-value** function, which estimates the expected reward for taking an action in a state.
+* R(s, a) is the immediate reward for taking action a in state s.
+* γ is the **discount factor**, which controls how much weight is given to future rewards.
+* Q'(s') is the action-value function for the next state s'.
+
+This equation is very similar to the Q* equation, but it uses a **min** operation instead of a **max** operation to calculate the value of the next state. This means that the algorithm will always choose the action that is expected to lead to the **worst** possible outcome in the next state. This may seem counterintuitive, but it can actually help the algorithm to avoid getting stuck in local optima.
+
+Here are some of the advantages of this equation:
+
+* It is simpler and more elegant than the Q* equation.
+* It may perform better than Q* in some cases, especially when the environment is uncertain or there is a lot of noise in the rewards.
+
+Here are some of the disadvantages of this equation:
+
+* It is not guaranteed to converge to the optimal policy.
+* It may be more computationally expensive than Q*.
+
+Overall, this equation is a promising alternative to Q* that may offer some advantages in terms of simplicity, elegance, and performance. However, more research is needed to fully understand its strengths and weaknesses.
