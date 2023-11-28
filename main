@@ -1,0 +1,47 @@
+**Adaptive Softmax with Hierarchical Curiosity**
+
+This algorithm combines the strengths of Adaptive Softmax and Hierarchical Curiosity to achieve better performance and efficiency.
+
+**Adaptive Softmax**
+
+Adaptive Softmax is a technique that improves the efficiency of reinforcement learning by dynamically adjusting the granularity of the action space. In Q*, the action space is typically represented as a one-hot vector, which can be inefficient for large action spaces. Adaptive Softmax addresses this issue by dividing the action space into clusters and assigning higher probabilities to actions within the most promising clusters.
+
+**Hierarchical Curiosity**
+
+Hierarchical Curiosity is a technique that encourages exploration by introducing a curiosity bonus to the reward function. The curiosity bonus is based on the difference between the predicted reward and the actual reward, motivating the agent to explore areas of the environment that are likely to provide new information.
+
+**Combining Adaptive Softmax and Hierarchical Curiosity**
+
+By combining Adaptive Softmax and Hierarchical Curiosity, we can achieve a more efficient and exploration-driven reinforcement learning algorithm. Adaptive Softmax improves the efficiency of the algorithm, while Hierarchical Curiosity encourages exploration and potentially leads to better performance in the long run.
+
+Here's the proposed algorithm:
+
+1. Initialize the Q-values for all actions in all states.
+
+2. At each time step:
+
+   a. Observe the current state s.
+
+   b. Select an action a according to an exploration policy that balances exploration and exploitation.
+
+   c. Execute action a and observe the resulting state s' and reward r.
+
+   d. Update the Q-value for action a in state s:
+
+   Q(s, a) = (1 - α) * Q(s, a) + α * (r + γ * max_a' Q(s', a'))
+
+   where α is the learning rate and γ is the discount factor.
+
+   e. Update the curiosity bonus for state s:
+
+   curio(s) = β * |r - Q(s, a)|
+
+   where β is the curiosity parameter.
+
+   f. Update the probability distribution over actions:
+
+   p(a | s) = exp(Q(s, a) + curio(s)) / ∑_a' exp(Q(s, a') + curio(s))
+
+3. Repeat steps 2a-2f until the termination criterion is met.
+
+The combination of Adaptive Softmax and Hierarchical Curiosity addresses the limitations of Q* and promotes more efficient and effective exploration.
