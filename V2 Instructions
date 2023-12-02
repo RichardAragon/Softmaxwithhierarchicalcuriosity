@@ -1,0 +1,25 @@
+Initialize: Define multiple Q-tables for different objectives, initialize a state-visit count table, and set initial values for dynamic learning rate and other parameters.
+
+At each time step:
+a. Observe the current state 
+�
+s.
+b. Adjust learning rate based on performance.
+c. Select a high-level action based on hierarchical action space and break it down into executable actions.
+d. Use a probabilistic action selection mechanism that accounts for uncertainty in Q-values.
+e. Execute action 
+�
+a and observe the resulting state 
+�
+′
+s 
+′
+  and reward 
+�
+r.
+f. Update Q-values for each objective.
+g. Calculate the TD error and update the curiosity bonus.
+h. Update the state-visit count.
+i. Use memory mechanism to influence the next action selection.
+
+Repeat steps 2a-2i until the termination criterion is met.
